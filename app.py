@@ -13,7 +13,18 @@ mysql = MySQL(app)
 @app.route('/')
 def Index():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM Poke')
+    cur.execute('''
+    select
+	Id,
+	Name,
+	TypeId,
+	RegionId,
+	Imagen,
+    Biology,
+    Etymology,
+    Male,
+    Female
+    from Pokemon''')
     data = cur.fetchall()
     return render_template('index.html', pokemon = data)
 
