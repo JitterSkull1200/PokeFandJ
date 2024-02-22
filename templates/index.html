@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Type</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pokemons in pokemon %}
+            <tr>
+                <td>
+                    {{ pokemons.0 }}
+                </td>
+                <td>
+                    {{ pokemons.1 }}
+                </td>
+                <td>
+                    {{ pokemons.2 }}
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+</table>
