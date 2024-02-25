@@ -1,54 +1,56 @@
 {% extends 'style.html' %}
 {% block body %}
-
-<table>
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Type</td>
-            <td>Region</td>
-            <td>Imagen</td>
-            <td>Biology</td>
-            <td>Etymology</td>
-            <td>Male</td>
-            <td>Female</td>
-        </tr>
-    </thead>
-    <tbody>
-        {% for pokemons in pokemon %}
-            <tr>
-                <td>
-                    {{ pokemons.0 }}
-                </td>
-                <td>
-                    {{ pokemons.1 }}
-                </td>
-                <td>
-                    {{ pokemons.2 }}
-                </td>
-                <td>
-                    {{ pokemons.3 }}
-                </td>
-                <td>
-                    {{ pokemons.4 }}
-                </td>
-                <td>
-                    {{ pokemons.5 }}
-                </td>
-                <td>
-                    {{ pokemons.6 }}
-                </td>
-                <td>
-                    {{ pokemons.7 }}
-                </td>
-                <td>
-                    {{ pokemons.8 }}
-                </td>
-
-            </tr>
-        {% endfor%}
-    </tbody>
-</table>
+<button class="button btn-danger offset-md-3">Agregar Nuevo Pokemon</button>
+<div class="col-md">
+    <table class="table table-border table-stripped table-sm">
+        <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Region</td>
+                    <td>Imagen</td>
+                    <td>Biology</td>
+                    <td>Etymology</td>
+                    <td>Male</td>
+                    <td>Female</td>
+                </tr>
+        </thead>
+        <tbody>
+            {% for pokemons in pokemon %}
+                <tr>
+                    <td>
+                        {{ pokemons.0 }}
+                    </td>
+                    <td>
+                        {{ pokemons.1 }}
+                    </td>
+                    <td>
+                        {{ pokemons.2 }}
+                    </td>
+                    <td>
+                        {{ pokemons.3 }}
+                    </td>
+                    <td>
+                        {{ pokemons.4 }}
+                    </td>
+                    <td>
+                        {{ pokemons.5 }}
+                    </td>
+                    <td>
+                        {{ pokemons.6 }}
+                    </td>
+                    <td>
+                        {{ pokemons.7 }}
+                    </td>
+                    <td>
+                        {{ pokemons.8 }}
+                    </td>
+    
+                </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
