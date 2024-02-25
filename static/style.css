@@ -4,3 +4,13 @@ body {
 button {
     font-size: 60px;
 }
+ul {
+    list-style: none;
+}
+ul li {
+    display: inline-block;
+    position: relative;
+}
+ul li ul.dropdown li {
+display: block;
+}

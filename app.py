@@ -32,10 +32,17 @@ def Index():
 @app.route('/new', methods=['GET','POST'])
 def add_poke():
     if request.method == 'POST':
-        name = request.form['name']
-        type = request.form['type']
+        id = request.form['Id']
+        name = request.form['Name']
+        type = request.form['TypeId']
+        region = request.form['RegionId']
+        imagen = request.form['Imagen']
+        biology = request.form['Biology']
+        etymology = request.form['Etymology']
+        male = request.form['Male']
+        female = request.form['Female']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO Poke (name, type) VALUES(%s, %s)',(name,type))
+        cur.execute('INSERT INTO Pokemon (Id, Name, TypeId, RegionId, Imagen, Biology, Etymology, Male, Female) VALUES(%i, %s,%i,%i,%b,%s,%s,%b,%b)',(id,name,type,region,imagen,biology,etymology,male,female))
         mysql.connection.commit()
         return redirect(url_for('Index'))
     return render_template('newpoke.html')
