@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
+import pathlib
+
 
 app = Flask(__name__)
 
@@ -36,17 +38,32 @@ def add_poke():
         name = request.form['Name']
         type = request.form['TypeId']
         region = request.form['RegionId']
-        imagen = request.form['Imagen']
+        image = request.form['Imagen']
         biology = request.form['Biology']
         etymology = request.form['Etymology']
         male = request.form['Male']
         female = request.form['Female']
+        pic1 = convertToBinary(image)
+        pic2 = convertToBinary(male)
+        pic3 = convertToBinary(female)
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO Pokemon (Id, Name, TypeId, RegionId, Imagen, Biology, Etymology, Male, Female) VALUES(%i, %s,%i,%i,%b,%s,%s,%b,%b)',(id,name,type,region,imagen,biology,etymology,male,female))
-        mysql.connection.commit()
-        return redirect(url_for('Index'))
+        cur.execute('INSERT INTO Pokemon (Id, Name, TypeId, RegionId, Imagen, Biology, Etymology, Male, Female) VALUES (%i, %s,%i,%i,%s,%s,%s,%s,%s)',(id,name,type,region,pic1,biology,etymology,pic2,pic3))
+        mysql.connection.commit()       
     return render_template('newpoke.html')
     
+@app.route("/upload_file", methods=["GET","POST"])
+def upload_file()   :
+    return render_template('newpoke.html')
+
+def convertToBinary(filename):
+    with open(filename,"rb") as file:
+        binaryData = file.read()
+    return binaryData
+
+def convertBinaryToFile(binarydata, filename):
+    with open(filename, "wb") as file:
+        file.write(binarydata)
+
 
 if __name__ == '__main__':
     app.run(port=3000,debug=True)
