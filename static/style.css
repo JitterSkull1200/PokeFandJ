@@ -4,13 +4,20 @@ body {
 button {
     font-size: 60px;
 }
-ul {
-    list-style: none;
+input {
+    background-color: red;
 }
-ul li {
-    display: inline-block;
+h1 {
+    color: yellow;
+    font-size: 125px;
     position: relative;
 }
-ul li ul.dropdown li {
-display: block;
+h2 {
+    color: red;
+    font-size: 125px;
+    position: relative;
+}
+h3 {
+    font-size: 25px;
+    color: blue;
 }
