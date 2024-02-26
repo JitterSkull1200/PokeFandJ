@@ -60,7 +60,7 @@ def add_poke():
 
     
 @app.route("/upload_file", methods=["GET","POST"])
-def upload_file()   :
+def upload_file():
     return render_template('newpoke.html')
 
 def convertToBinary(filename):
