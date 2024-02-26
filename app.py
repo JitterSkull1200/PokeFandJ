@@ -14,6 +14,11 @@ mysql = MySQL(app)
 
 @app.route('/')
 def Index():
+    return render_template('newpoke.html')
+
+
+@app.route('/hello')
+def Home():
     cur = mysql.connection.cursor()
     cur.execute('''
     select
@@ -33,6 +38,7 @@ def Index():
 
 @app.route('/new', methods=['GET','POST'])
 def add_poke():
+    print("Ya no puedo!")
     if request.method == 'POST':
         id = request.form['Id']
         name = request.form['Name']
@@ -43,13 +49,15 @@ def add_poke():
         etymology = request.form['Etymology']
         male = request.form['Male']
         female = request.form['Female']
+        print("Holaaaaa!")
         pic1 = convertToBinary(image)
         pic2 = convertToBinary(male)
         pic3 = convertToBinary(female)
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO Pokemon (Id, Name, TypeId, RegionId, Imagen, Biology, Etymology, Male, Female) VALUES (%i, %s,%i,%i,%s,%s,%s,%s,%s)',(id,name,type,region,pic1,biology,etymology,pic2,pic3))
-        mysql.connection.commit()       
-    return render_template('newpoke.html')
+        cur.execute('INSERT INTO Pokemon (Id, Name, TypeId, RegionId, Imagen, Biology, Etymology, Male, Female) VALUES (%s, %s,%s,%s,%s,%s,%s,%s,%s)',(id,name,type,region,pic1,biology,etymology,pic2,pic3))
+        mysql.connection.commit()
+    return redirect(url_for('Index'))
+
     
 @app.route("/upload_file", methods=["GET","POST"])
 def upload_file()   :
