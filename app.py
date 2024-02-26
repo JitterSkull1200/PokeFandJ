@@ -24,14 +24,8 @@ def Home():
     select
 	Id,
 	Name,
-	TypeId,
-	RegionId,
-	Imagen,
-    Biology,
-    Etymology,
-    Male,
-    Female
-    from Pokemon''')
+	Photo
+    from test''')
     data = cur.fetchall()
     return render_template('index.html', pokemon = data)
 
@@ -60,7 +54,7 @@ def add_poke():
 
     
 @app.route("/upload_file", methods=["GET","POST"])
-def upload_file():
+def upload_file()   :
     return render_template('newpoke.html')
 
 def convertToBinary(filename):
